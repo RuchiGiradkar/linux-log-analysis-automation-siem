@@ -1,321 +1,285 @@
-# Linux Log Analysis, Detection Automation & SIEM Visualization
+# Linux Log Analysis, Detection Automation & SIEM Investigation
 
-## Project Overview
+## Overview
 
-This project demonstrates a complete Security Operations Center (SOC) workflow for detecting suspicious authentication activity within Linux systems.
+This project demonstrates an end-to-end cybersecurity investigation workflow focused on identifying suspicious authentication activity within Linux systems.
 
-The project combines:
+The project combines manual log analysis, Python-based detection automation, and Security Information and Event Management (SIEM) capabilities using Splunk Enterprise to detect, analyze, and visualize indicators of potential brute-force attacks and unauthorized access attempts.
 
-- Manual log analysis
-- Python-based threat detection automation
-- CSV reporting
-- SIEM investigation using Splunk Enterprise
-- Security visualization and threat analysis
-
-The objective was to identify indicators of brute-force attacks, authentication failures, and unauthorized access attempts from Linux authentication logs.
+Through this project, Linux authentication logs were examined to identify authentication failures, invalid user activity, and repeated login attempts targeting privileged accounts. The findings were then validated and visualized within Splunk to simulate a real-world Security Operations Center (SOC) investigation process.
 
 ---
 
-## Project Architecture
+## Objectives
 
-```text
-Linux Authentication Logs
-            │
-            ▼
- Manual Log Analysis
-            │
-            ▼
- Suspicious Events Identified
-            │
-            ▼
- Python Detection Script
-            │
-            ▼
- CSV Report Generation
-            │
-            ▼
- Splunk SIEM Ingestion
-            │
-            ▼
- Search & Investigation
-            │
-            ▼
- Visualization & Reporting
-```
+* Investigate Linux authentication logs for suspicious activity.
+* Identify authentication failures and unauthorized access attempts.
+* Automate detection of suspicious events using Python.
+* Generate structured security reports for analysis.
+* Validate findings through SIEM-based investigation.
+* Visualize attack patterns and trends.
+* Apply security monitoring techniques commonly used in SOC environments.
 
 ---
 
-## Tools & Technologies
+## Technologies and Tools
 
-| Tool | Purpose |
-|--------|---------|
-| Linux Authentication Logs | Event Source |
-| Python 3 | Detection Automation |
-| VS Code | Development Environment |
-| CSV Reporting | Data Export |
-| Splunk Enterprise | SIEM Investigation |
-| Excel | Findings Analysis |
+| Technology                | Purpose                    |
+| ------------------------- | -------------------------- |
+| Linux Authentication Logs | Security Event Source      |
+| Python 3                  | Log Analysis Automation    |
+| Visual Studio Code        | Development Environment    |
+| CSV Reporting             | Structured Output          |
+| Splunk Enterprise         | SIEM Investigation         |
+| Excel                     | Data Review and Validation |
 
 ---
 
-## Skills Demonstrated
+## Cybersecurity Skills Demonstrated
 
-### Security Operations (SOC)
+### Security Operations Center (SOC)
 
-- Security Monitoring
-- Threat Hunting
-- Incident Investigation
-- Log Analysis
-- Event Correlation
-- Security Reporting
+* Security Monitoring
+* Log Analysis
+* Threat Hunting
+* Event Investigation
+* Security Reporting
+* Incident Analysis
 
 ### Detection Engineering
 
-- Authentication Failure Detection
-- Brute Force Detection
-- Pattern Identification
-- Security Automation
+* Authentication Failure Detection
+* Brute-Force Activity Identification
+* Event Correlation
+* Security Data Processing
 
-### SIEM
+### SIEM Operations
 
-- Splunk Search Processing Language (SPL)
-- Event Analysis
-- Statistics Reporting
-- Security Visualization
+* Log Ingestion
+* Event Search and Filtering
+* Statistical Analysis
+* Security Visualization
+* Attack Pattern Identification
 
-### Scripting
+### Scripting and Automation
 
-- Python Automation
-- Data Processing
-- CSV Export
-- Pattern Matching
-
----
-
-# Phase 1: Manual Threat Investigation
-
-## Objective
-
-Analyze Linux authentication logs to identify suspicious activity.
-
-## Activities Performed
-
-- Reviewed Linux authentication logs
-- Investigated failed login attempts
-- Identified invalid user activity
-- Tracked repeated authentication failures
-- Documented suspicious events
-
-## Findings
-
-Several suspicious authentication events were identified:
-
-- Repeated login attempts against the root account
-- Authentication failures originating from external IP addresses
-- Invalid username enumeration attempts
-- Evidence consistent with brute-force behavior
-
-### Screenshot
-
-![Manual Analysis](screenshots/manual-analysis.png)
+* Python Log Parsing
+* Data Extraction
+* Event Classification
+* Automated Reporting
 
 ---
 
-# Phase 2: Detection Automation Using Python
+## Investigation Methodology
 
-## Objective
+### Manual Log Analysis
 
-Automate the identification of suspicious authentication events.
+The investigation began with a manual review of Linux authentication logs to understand event structure and identify potential indicators of malicious activity.
 
-## Detection Logic
+The analysis focused on:
 
-The Python script was designed to detect:
+* Failed password attempts
+* Authentication failures
+* Invalid user accounts
+* Unknown user activity
+* Privileged account targeting
 
-- Failed Password Attempts
-- Authentication Failures
-- Invalid User Activity
-- Unknown User Logins
+Manual review enabled identification of suspicious authentication patterns and provided a baseline for automation.
 
-## Key Features
+### Detection Automation
 
-- Reads Linux authentication logs
-- Parses selected log ranges
-- Flags suspicious entries
-- Categorizes security events
-- Exports findings to CSV
+To improve efficiency and scalability, a Python script was developed to automate the detection process.
 
-### Screenshot
+The script performs the following functions:
 
-![Python Script](screenshots/python-script.png)
+* Reads Linux authentication logs
+* Extracts relevant log entries
+* Searches for predefined suspicious patterns
+* Classifies events based on activity type
+* Generates structured output for reporting
 
-### Detection Output
+Detected events include:
 
-![Terminal Output](screenshots/terminal-output.png)
+* Failed Login Attempts
+* Authentication Failures
+* Invalid User Activity
+* Unknown User Activity
+
+Results are exported into CSV format to support further investigation and reporting.
+
+### SIEM Investigation
+
+The Linux log dataset was ingested into Splunk Enterprise for centralized analysis.
+
+Custom searches were performed to identify authentication-related anomalies and validate findings discovered during manual and automated analysis.
+
+Splunk was used to:
+
+* Search and filter security events
+* Correlate authentication failures
+* Identify recurring attack sources
+* Analyze event frequency
+* Visualize attack trends
+
+This phase simulates how security analysts investigate suspicious activity within enterprise environments.
 
 ---
 
-# Phase 3: Security Reporting
-
-## Objective
-
-Generate structured reports for easier investigation.
-
-The detected security events were exported into CSV format for further analysis and reporting.
-
-### Screenshot
-
-![CSV Results](screenshots/csv-results.png)
-
----
-
-# Phase 4: SIEM Investigation Using Splunk
-
-## Objective
-
-Validate findings using Splunk Enterprise and visualize attack patterns.
-
-### Log Ingestion
-
-Linux authentication logs were ingested into Splunk Enterprise for centralized analysis.
-
-### SPL Query
+## Splunk Search Query
 
 ```spl
 source="Linux2k.log"
-("Failed password" OR
-"authentication failure" OR
-"invalid user" OR
-"user unknown")
+("Failed password"
+OR "authentication failure"
+OR "invalid user"
+OR "user unknown")
 ```
 
-### Security Events View
-
-![Splunk Events](screenshots/splunk-events.png)
-
-### Statistics Analysis
-
-The Statistics View was used to:
-
-- Group events by IP address
-- Identify high-frequency attack sources
-- Analyze targeted usernames
-- Measure event volume
-
-![Splunk Statistics](screenshots/splunk-statistics.png)
-
-### Visualization
-
-Authentication failures were visualized over time to identify attack spikes and brute-force behavior.
-
-![Splunk Visualization](screenshots/splunk-visualization.png)
+This search isolates authentication-related events that may indicate unauthorized access attempts, account enumeration, or brute-force activity.
 
 ---
 
-# Security Findings
+## Security Findings
 
-## Finding 1: Brute Force Authentication Attempts
+### Finding 1 – Repeated Authentication Failures
 
-### Observation
+Multiple authentication failures were observed across the dataset.
 
-Repeated authentication failures were observed against privileged accounts.
+#### Observation
 
-### Impact
+Repeated login attempts occurred within short time intervals against privileged accounts.
 
-Attackers may be attempting to gain unauthorized access through password guessing.
+#### Security Impact
 
-### Risk Level
+This behavior is commonly associated with password-guessing attacks and brute-force activity.
+
+#### Risk Rating
 
 High
 
-### MITRE ATT&CK
+#### MITRE ATT&CK Mapping
 
 T1110 – Brute Force
 
 ---
 
-## Finding 2: Username Enumeration Activity
+### Finding 2 – Invalid User Enumeration
 
-### Observation
+Several authentication attempts targeted usernames that did not exist on the system.
 
-Multiple invalid user login attempts were detected.
+#### Observation
 
-### Impact
+Attackers attempted authentication against multiple invalid accounts.
 
-Indicates reconnaissance activity to identify valid accounts.
+#### Security Impact
 
-### Risk Level
+This activity may indicate reconnaissance efforts intended to discover valid user accounts before launching further attacks.
+
+#### Risk Rating
 
 Medium
 
-### MITRE ATT&CK
+#### MITRE ATT&CK Mapping
 
 T1589 – Gather Victim Identity Information
 
 ---
 
-## Finding 3: Privileged Account Targeting
+### Finding 3 – Privileged Account Targeting
 
-### Observation
+The root account was repeatedly targeted during authentication attempts.
 
-The root account was repeatedly targeted.
+#### Observation
 
-### Impact
+A significant number of failed logins involved privileged system accounts.
 
-Successful compromise would provide administrative access.
+#### Security Impact
 
-### Risk Level
+Successful compromise of a privileged account could result in complete system access.
+
+#### Risk Rating
 
 High
 
-### MITRE ATT&CK
+#### MITRE ATT&CK Mapping
 
 T1078 – Valid Accounts
 
 ---
 
-# MITRE ATT&CK Mapping
+## MITRE ATT&CK Coverage
 
-| Activity | ATT&CK Technique |
-|------------|----------------|
-| Failed Login Attempts | T1110 |
-| Brute Force Attempts | T1110 |
-| Invalid User Enumeration | T1589 |
-| Root Account Targeting | T1078 |
-| Authentication Abuse | T1078 |
-
----
-
-# Project Outcomes
-
-This project demonstrates the ability to:
-
-- Analyze Linux authentication logs
-- Identify suspicious security events
-- Automate threat detection using Python
-- Generate investigation reports
-- Use Splunk for SIEM analysis
-- Visualize attack patterns
-- Produce actionable security findings
+| Observed Activity            | MITRE ATT&CK Technique |
+| ---------------------------- | ---------------------- |
+| Failed Login Attempts        | T1110                  |
+| Brute-Force Activity         | T1110                  |
+| Invalid User Enumeration     | T1589                  |
+| Privileged Account Targeting | T1078                  |
+| Authentication Abuse         | T1078                  |
 
 ---
 
-# Future Improvements
+## Project Evidence
 
-- Real-time log monitoring
-- Automated alert generation
-- Integration with Syslog servers
-- Dashboard development in Splunk
-- Threat intelligence enrichment
-- Geo-IP analysis of source addresses
+### Manual Log Investigation
+
+![Manual Analysis](screenshots/manual-analysis.png)
+
+### Python Detection Script
+
+![Python Script](screenshots/python-script.png)
+
+### Detection Results
+
+![Terminal Output](screenshots/terminal-output.png)
+
+### CSV Security Report
+
+![CSV Results](screenshots/csv-results.png)
+
+### Splunk Event Investigation
+
+![Splunk Events](screenshots/splunk-events.png)
+
+### Splunk Statistical Analysis
+
+![Splunk Statistics](screenshots/splunk-statistics.png)
+
+### Splunk Visualization Dashboard
+
+![Splunk Visualization](screenshots/splunk-visualization.png)
 
 ---
 
-# Author
+## Key Outcomes
 
-Ruchi
+This project demonstrates practical experience in:
 
-Cybersecurity Analyst | SOC Operations | Threat Detection | Security Monitoring
+* Linux log analysis
+* Security event investigation
+* Authentication monitoring
+* Detection automation using Python
+* SIEM operations using Splunk
+* Threat identification and validation
+* Security reporting and visualization
+* MITRE ATT&CK mapping
+* SOC investigation workflows
 
-LinkedIn: YOUR_LINKEDIN_URL
+The project reflects a layered investigation approach where manual analysis, automation, and SIEM capabilities are combined to improve detection accuracy and operational efficiency.
 
-GitHub: YOUR_GITHUB_URL
+---
+
+## Future Improvements
+
+* Real-time log monitoring and alerting
+* Automated detection rules for suspicious authentication behavior
+* Integration with Syslog infrastructure
+* Enhanced IP reputation analysis
+* Threat intelligence enrichment
+* Splunk dashboard development
+* Automated incident reporting
+* Detection coverage expansion using MITRE ATT&CK techniques
+
+---
+
+This project was developed to demonstrate practical SOC analyst skills by combining manual investigation techniques, detection automation, and SIEM-driven threat analysis using real-world Linux authentication logs.
