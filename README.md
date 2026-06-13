@@ -223,7 +223,7 @@ T1078 – Valid Accounts
 
 ### Manual Log Investigation
 
-![Manual Analysis](screenshots/Manual_Log_Investigation.png.png)
+![Manual Analysis](screenshots/Manual_Log_Investigation.png)
 
 ### Python Detection Script
 
