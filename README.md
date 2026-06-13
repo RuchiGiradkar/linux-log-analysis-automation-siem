@@ -223,31 +223,31 @@ T1078 – Valid Accounts
 
 ### Manual Log Investigation
 
-![Manual Analysis](screenshots/manual-analysis.png)
+![Manual Analysis](screenshots/Manual_Log_Investigation.png.png)
 
 ### Python Detection Script
 
-![Python Script](screenshots/python-script.png)
+![Python Script](screenshots/Python_Detection_Script.png)
 
 ### Detection Results
 
-![Terminal Output](screenshots/terminal-output.png)
+![Terminal Output](screenshots/Detection_Results.png)
 
 ### CSV Security Report
 
-![CSV Results](screenshots/csv-results.png)
+![CSV Results](screenshots/CSV_Security_Report.png)
 
 ### Splunk Event Investigation
 
-![Splunk Events](screenshots/splunk-events.png)
+![Splunk Events](screenshots/Splunk_Event_Investigation.png)
 
 ### Splunk Statistical Analysis
 
-![Splunk Statistics](screenshots/splunk-statistics.png)
+![Splunk Statistics](screenshots/Splunk_Statistical_Analysis.png)
 
 ### Splunk Visualization Dashboard
 
-![Splunk Visualization](screenshots/splunk-visualization.png)
+![Splunk Visualization](screenshots/Splunk_Visualization_Dashboard.png)
 
 ---
 
